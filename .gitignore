@@ -1,0 +1,10 @@
+#directories to ignore
+_*/
+
+## general ignores
+**/__pycache__/
+*.h5
+*.weights
+~
+~
+
