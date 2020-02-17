@@ -2,6 +2,7 @@
 # based on https://github.com/experiencor/keras-yolo3
 import struct
 import numpy as np
+from pathlib import Path
 from keras.layers import Conv2D
 from keras.layers import Input
 from keras.layers import BatchNormalization
@@ -156,6 +157,8 @@ class WeightReader:
 		self.offset = 0
 
 if __name__ == '__main__':
+	savedir = Path('models')
+	savedir.mkdir(exist_ok=True)
 	# define the model
 	model = make_yolov3_model()
 	# load the model weights
@@ -163,4 +166,4 @@ if __name__ == '__main__':
 	# set the model weights into the model
 	weight_reader.load_weights(model)
 	# save the model to file
-	model.save('model.h5')
+	model.save(str(savedir/'yolo.h5'))

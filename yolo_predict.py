@@ -1,6 +1,7 @@
 # based on https://github.com/experiencor/keras-yolo3
 import numpy as np
 from numpy import expand_dims
+from pathlib import Path
 from keras.models import load_model
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -168,12 +169,13 @@ def draw_boxes(filename, v_boxes, v_labels, v_scores):
 	pyplot.show()
 
 if __name__ == '__main__':
+	savedir = Path('models')
 	# load yolov3 model
-	model = load_model('model.h5')
+	model = load_model(str(savedir/'yolo.h5'))
 	# define the expected input shape for the model
 	input_w, input_h = 416, 416
 	# define our new photo
-	photo_filename = 'zebra.jpg'
+	photo_filename = 'test/zebra.jpg'
 	# load and prepare image
 	image, image_w, image_h = load_image_pixels(photo_filename, (input_w, input_h))
 	# make prediction
