@@ -1,0 +1,5 @@
+#in tf_models/research/object_detection run the following
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+python -i train.py --train_dir=/home/px2/courses/wasp-as1/waspAS1ObjDet/models/mobilenet_pedestrians/ --pipeline_config_path=/home/px2/courses/wasp-as1/waspAS1ObjDet/datasets/pedestrians/ssd_mobilenet_v1_pets.config
+python -i eval.py --pipeline_config_path=/home/px2/courses/wasp-as1/waspAS1ObjDet/datasets/pedestrians/ssd_mobilenet_v1_pets.config --checkpoint_dir=/home/px2/courses/wasp-as1/waspAS1ObjDet/models/mobilenet_pedestrians --eval_dir=/home/px2/courses/wasp-as1/waspAS1ObjDet/test/mobilenet_pedestrians
+python -i export_inference_graph.py --input_type=image_tensor --pipeline_config_path=/home/px2/courses/wasp-as1/waspAS1ObjDet/datasets/pedestrians/ssd_mobilenet_v1_pets.config --trained_checkpoint_prefix=/home/px2/courses/wasp-as1/waspAS1ObjDet/models/mobilenet_pedestrians/model.ckpt-2813 --output_directory=/home/px2/courses/wasp-as1/waspAS1ObjDet/models/mobilenet_pedestrians_ig

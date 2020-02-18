@@ -39,23 +39,23 @@ MODEL_TAR = MODEL_DIR/MODEL_FILE
 TF_OBDET_DIR = Path('../tf_models/research/object_detection')
 
 
-if not MODEL_TAR.exists():
-	opener = urllib.request.URLopener()
-	opener.retrieve(DOWNLOAD_BASE + MODEL_FILE, str(MODEL_TAR))
+# if not MODEL_TAR.exists():
+# 	opener = urllib.request.URLopener()
+# 	opener.retrieve(DOWNLOAD_BASE + MODEL_FILE, str(MODEL_TAR))
 
-tar_file = tarfile.open(str(MODEL_TAR))
-for file in tar_file.getmembers():
-	file_name = os.path.basename(file.name)
-	if 'frozen_inference_graph.pb' in file_name:
-		tar_file.extract(file, MODEL_DIR)
+# tar_file = tarfile.open(str(MODEL_TAR))
+# for file in tar_file.getmembers():
+# 	file_name = os.path.basename(file.name)
+# 	tar_file.extract(file, MODEL_DIR)
+	
 
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_CKPT = MODEL_DIR/MODEL_NAME/'frozen_inference_graph.pb'
+PATH_TO_CKPT = '/home/px2/courses/wasp-as1/waspAS1ObjDet/models/mobilenet_pedestrians_ig/frozen_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
-PATH_TO_LABELS = TF_OBDET_ROOT/'research/object_detection/data/mscoco_label_map.pbtxt' #os.path.join('data', 'mscoco_label_map.pbtxt')
-NUM_CLASSES = 90
+PATH_TO_LABELS = '/home/px2/courses/wasp-as1/waspAS1ObjDet/datasets/pedestrians/labelmap.pbtxt' #os.path.join('data', 'mscoco_label_map.pbtxt')
+NUM_CLASSES = 1
 
 detection_graph = tf.Graph()
 with detection_graph.as_default():
@@ -74,8 +74,8 @@ category_index = label_map_util.create_category_index(categories)
 # image1.jpg
 # image2.jpg
 # If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATHS.
-TEST_IMAGES_DIR = TF_OBDET_DIR/'test_images'
-TEST_IMAGE_PATHS = [str(TEST_IMAGES_DIR/'image{}.jpg'.format(i)) for i in range(1, 3) ]
+TEST_IMAGES_DIR = '/home/px2/courses/wasp-as1/waspAS1ObjDet/test/mobilenet_pedestrians/'
+TEST_IMAGE_PATHS = [str(TEST_IMAGES_DIR + 'crop_00000{}.jpg'.format(i)) for i in range(1, 10) ]
 
 # Size, in inches, of the output images.
 IMAGE_SIZE = (12, 8)

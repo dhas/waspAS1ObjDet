@@ -2,6 +2,7 @@
 _*/
 datasets/
 models/
+test/*
 
 ## general ignores
 **/__pycache__/
