@@ -1,10 +1,13 @@
 #directories to ignore
 _*/
+datasets/
+models/
 
 ## general ignores
 **/__pycache__/
 *.h5
 *.weights
+*.png
 ~
 ~
 
