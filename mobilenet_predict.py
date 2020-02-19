@@ -23,20 +23,22 @@ from object_detection.utils import visualization_utils as vis_util
 
 # utils
 def load_image_into_numpy_array(image):
+	if image.mode == 'L':
+		image = image.convert('RGB')
 	(im_width, im_height) = image.size
 	return np.array(image.getdata()).reshape(
 		(im_height, im_width, 3)).astype(np.uint8)
 
 
-# What model to download.
-MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
-MODEL_FILE = MODEL_NAME + '.tar.gz'
-DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
+# # What model to download.
+# MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
+# MODEL_FILE = MODEL_NAME + '.tar.gz'
+# DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
 
-MODEL_DIR = Path('models/')
-MODEL_TAR = MODEL_DIR/MODEL_FILE
+# MODEL_DIR = Path('models/')
+# MODEL_TAR = MODEL_DIR/MODEL_FILE
 
-TF_OBDET_DIR = Path('../tf_models/research/object_detection')
+# TF_OBDET_DIR = Path('../tf_models/research/object_detection')
 
 
 # if not MODEL_TAR.exists():
@@ -51,10 +53,10 @@ TF_OBDET_DIR = Path('../tf_models/research/object_detection')
 
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_CKPT = '/home/px2/courses/wasp-as1/waspAS1ObjDet/models/mobilenet_pedestrians_ig/frozen_inference_graph.pb'
+PATH_TO_CKPT = 'models/mobilenet_pens_ig/frozen_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
-PATH_TO_LABELS = '/home/px2/courses/wasp-as1/waspAS1ObjDet/datasets/pedestrians/labelmap.pbtxt' #os.path.join('data', 'mscoco_label_map.pbtxt')
+PATH_TO_LABELS = 'datasets/oid_pens/labelmap.pbtxt' #os.path.join('data', 'mscoco_label_map.pbtxt')
 NUM_CLASSES = 1
 
 detection_graph = tf.Graph()
@@ -74,8 +76,8 @@ category_index = label_map_util.create_category_index(categories)
 # image1.jpg
 # image2.jpg
 # If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATHS.
-TEST_IMAGES_DIR = '/home/px2/courses/wasp-as1/waspAS1ObjDet/test/mobilenet_pedestrians/'
-TEST_IMAGE_PATHS = [str(TEST_IMAGES_DIR + 'crop_00000{}.jpg'.format(i)) for i in range(1, 10) ]
+TEST_IMAGES_DIR = '/home/px2/courses/wasp-as1/waspAS1ObjDet/test/mobilenet_pens/'
+TEST_IMAGE_PATHS = [str(TEST_IMAGES_DIR + '{}.jpg'.format(i)) for i in range(1, 8) ]
 
 # Size, in inches, of the output images.
 IMAGE_SIZE = (12, 8)
