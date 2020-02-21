@@ -56,7 +56,7 @@ def load_image_into_numpy_array(image):
 PATH_TO_CKPT = 'models/mobilenet_pens_ig/frozen_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
-PATH_TO_LABELS = 'datasets/oid_pens/labelmap.pbtxt' #os.path.join('data', 'mscoco_label_map.pbtxt')
+PATH_TO_LABELS = 'models/mobilenet_pens_ig/labelmap.pbtxt' #os.path.join('data', 'mscoco_label_map.pbtxt')
 NUM_CLASSES = 1
 
 detection_graph = tf.Graph()
