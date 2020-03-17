@@ -70,7 +70,7 @@ with detection_graph.as_default():
 
 label_map = label_map_util.load_labelmap(str(PATH_TO_LABELS))
 categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NUM_CLASSES, use_display_name=True)
-category_index = label_map_util.create_category_index(categories)
+category_index = {1: {'name': 'Pen'}}#label_map_util.create_category_index(categories)
 
 # For the sake of simplicity we will use only 2 images:
 # image1.jpg
