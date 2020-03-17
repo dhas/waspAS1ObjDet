@@ -23,6 +23,6 @@ https://github.com/tzutalin/labelImg
 
 3. Annotate the Images with LabelImg Tool. Put annotation .xml files in a folder named 'Annotation' and Images in a folder named 'JPEGImages'
 
-4.Put the dataset_to_tfrecord2.py in the along with 'Annotation' and 'JPEGImages' folders and run it. The TFRecords will be created as test.record and train.record in the same folder
+4. Put the dataset_to_tfrecord2.py in the along with 'Annotation' and 'JPEGImages' folders and run it. The TFRecords will be created as test.record and train.record in the same folder
 
-5.Put the train.record and previous TFRecord in corresponding folders and run the merge_tfreord.py to merge the TFRecords 
+5. Put the train.record and previous TFRecord in corresponding folders and run the merge_tfreord.py to merge the TFRecords 
