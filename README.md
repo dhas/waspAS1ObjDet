@@ -10,7 +10,7 @@
 3. Train the model using the script transfer_learning.py
 	- Note: To train you need the necessary config files and tfrecords so please ask us
 
-## Pen detection in a live stream
+## Detecting pens in a live stream
 1. Download the pretrained model from the link in the demo slide deck
 2. Run live detection using predict_live.py
 	- Note: To run this, you may need to install TF object detection dependencies
