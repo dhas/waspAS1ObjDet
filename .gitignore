@@ -9,6 +9,8 @@ test/*
 *.h5
 *.weights
 *.png
+*.pdf
+*.zip
 ~
 ~
 
